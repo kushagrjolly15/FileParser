@@ -64,8 +64,8 @@ class Person:
         return self.__str__()
 
 class FileParser:
-    def __init__(self, delimeter=' '):
-        self.__delimeter = delimeter
+    def __init__(self, delimiter=' '):
+        self.__delimeter = delimiter
     
     def parse_and_get_persons(self, file):
         with open(file) as f:
@@ -103,8 +103,8 @@ def display_persons_list(persons):
     for person in persons:
         print(person)
 
-def main(file, delimeter):
-    parser = FileParser(delimeter)
+def main(file, delimiter):
+    parser = FileParser(delimiter)
     persons = parser.parse_and_get_persons(file)
     print("Given Data:")
     display_persons_list(persons)
@@ -121,9 +121,9 @@ if __name__ == '__main__':
     argparser = argparse.ArgumentParser()
     argparser.add_argument("-file", help="Path to the file to be parsed")
     argparser.add_argument(
-                    "-delimeter",
-                    help="""Delimeter used, default ',' 
+                    "-delimiter",
+                    help="""Delimiter used, default ',' 
                             if using '|' or ' ' please use \"|\" and
                             \" \" respectively.""", default=',')
     args = argparser.parse_args()
-    main(args.file, args.delimeter)
+    main(args.file, args.delimiter)
